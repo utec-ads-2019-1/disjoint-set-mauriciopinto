@@ -9,9 +9,9 @@ class Node {
 public:
     int data;
     int rank;
-    int joints;
+    int size;
     Node* parent;
-    Node(int data) : data(data), parent(this), rank(0), joints(0){};
+    Node(int data) : data(data), parent(this), rank(0), size(1){};
 
     Node* findRoot(){
         Node* current = this;
