@@ -22,34 +22,32 @@ void print(Node* node){
 
 void merge(int i1, int i2){
     findNode(i2)->findRoot()->parent = findNode(i1)->findRoot();
-    print(findNode(i1));
-    print(findNode(i2));
-    findNode(i1)->joints = findNode(i2)->joints + 1;
-    findNode(i1)->rank += (findNode(i2)->rank + 1);
+    findNode(i1)->findRoot()->size += findNode(i2)->findRoot()->size;
+    findNode(i1)->findRoot()->rank += (findNode(i2)->findRoot()->rank + 1);
 }
 
 void mergeRank(int i1, int i2){
     if(findNode(i1)->findRoot()->rank > findNode(i2)->findRoot()->rank){
         findNode(i2)->findRoot()->parent = findNode(i1)->findRoot();
-        findNode(i1)->joints = findNode(i2)->joints + 1;
-        findNode(i1)->rank += (findNode(i2)->rank + 1);
+        findNode(i1)->findRoot()->size += findNode(i2)->findRoot()->size;
+        findNode(i1)->findRoot()->rank += (findNode(i2)->findRoot()->rank + 1);
     }
     else{
         findNode(i1)->findRoot()->parent = findNode(i2)->findRoot();
-        findNode(i2)->joints = findNode(i1)->joints + 1;
-        findNode(i1)->rank += (findNode(i2)->rank + 1);
+        findNode(i2)->findRoot()->size += findNode(i1)->findRoot()->size;
+        findNode(i2)->findRoot()->rank += (findNode(i1)->findRoot()->rank + 1);
     }
 }
 void mergeSize(int i1, int i2){
-    if(findNode(i1)->findRoot()->joints > findNode(i2)->findRoot()->joints){
+    if(findNode(i1)->findRoot()->size > findNode(i2)->findRoot()->size){
         findNode(i2)->findRoot()->parent = findNode(i1)->findRoot();
-        findNode(i1)->joints = findNode(i2)->joints + 1;
-        findNode(i1)->rank += (findNode(i2)->rank + 1);
+        findNode(i1)->findRoot()->size += findNode(i2)->findRoot()->size;
+        findNode(i1)->findRoot()->rank += (findNode(i2)->findRoot()->rank + 1);
     }
     else{
         findNode(i1)->findRoot()->parent = findNode(i2)->findRoot();
-        findNode(i2)->joints = findNode(i1)->joints + 1;
-        findNode(i1)->rank += (findNode(i2)->rank + 1);
+        findNode(i2)->findRoot()->size += findNode(i1)->findRoot()->size;
+        findNode(i2)->findRoot()->rank += (findNode(i1)->findRoot()->rank + 1);
     }
 }
 
